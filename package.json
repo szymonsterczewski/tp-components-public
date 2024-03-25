@@ -1,0 +1,56 @@
+{
+  "name": "tp-components-public",
+  "private": true,
+  "version": "0.0.3",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --mode production && npm run generate:types",
+    "prepare": "vite build --mode production && npm run generate:types",
+    "generate:types": "vue-tsc -p tsconfig-build.json --declaration --emitDeclarationOnly true --outdir ./dist",
+    "preview": "vite preview",
+    "tailwind": "npx tailwindcss -i ./src/TpComponents/tailwind.css -o ./src/TpComponentsmain.css --watch"
+  },
+  "main": "./dist/tp-components.umd.cjs",
+  "module": "./dist/tp-components.js",
+  "types": "./dist/index.d.ts",
+  "peerDependencies": {
+    "tailwindcss": "^3",
+    "vue": "^3.2.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/tp-components.js",
+      "require": "./dist/tp-components.umd.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./dist/*.css": {
+      "import": "./dist/*.css",
+      "require": "./dist/*.css"
+    }
+  },
+  "dependencies": {
+    "@headlessui/vue": "^1.7.19",
+    "@heroicons/vue": "1.0.6",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
+    "autoprefixer": "^10.4.18",
+    "flowbite": "^2.3.0",
+    "postcss": "^8.4.35",
+    "v-calendar": "^3.1.2"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "@types/node": "^20.11.30",
+    "@vitejs/plugin-vue": "^5.0.4",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.4.2",
+    "vite": "^5.1.6",
+    "vite-plugin-static-copy": "^1.0.1",
+    "vitest": "^1.3.1",
+    "vue-tsc": "^1.8.27"
+  }
+}
